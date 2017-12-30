@@ -1,0 +1,84 @@
+header {
+    height: 100vh;
+    background-image: url("../assets/Images/hero-01.jpg");
+    background-size: cover;
+    color: #ffffff;
+    position: relative;
+
+    nav {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        #logo-nav {
+            height: 43px;
+            width: 72px;
+            margin: 10px 0;
+        }
+
+        ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 20px 0;
+        text-align: right;
+
+            li {
+                display: inline;
+                font-size: 14px;
+                margin: 0 10px;
+            }
+        }
+    }
+
+    .wrapper {
+        width: 80%;
+        margin: 0 auto;
+        padding: 120px 0;
+        text-align: center;
+
+        #logo {
+            height: 80px;
+        }
+
+        p {
+            padding: 20px 0;
+            margin: 0 50px;
+            font-size: 13px;
+        }
+
+        button {
+            background-color: transparent;
+            padding: 5px 30px;
+            border-radius: 3px;
+            border: 1px solid #ffffff;
+            cursor: pointer;
+            color: #ffffff;
+            transition: all 0.5s linear;
+
+            &:hover {
+                background-color: #ffffff;
+                color: #000000;
+            }
+        }
+    }
+
+    .scroll-btn-wrapper {
+        margin: 0 auto;
+        text-align: center;
+
+        #scroll-icon {
+            height: 30px;
+            cursor: pointer;
+        }
+
+        p {
+            margin: 5px 0;
+        }
+    }
+
+    .sep-bot {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+    }
+}
