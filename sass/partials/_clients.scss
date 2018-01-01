@@ -1,0 +1,69 @@
+.clients {
+    background-color: $section-bckgrnd-color;
+
+    .lorem-ipsum {
+        margin: 10px auto 100px;
+    }
+
+    .quote {
+        @extend .lorem-ipsum;
+        margin: 30px auto;
+    }
+
+    .carousel {
+        margin: 0 auto;
+        border-top: 1px solid $blue;
+
+        .carousel-indicators {
+            top: 0;
+            bottom: initial;
+
+            li {
+                width: 0;
+                height: 0;
+                border-style: solid;
+                margin: 0 60px;
+                border-width: 20px 15px 0 15px;
+                border-color: transparent transparent transparent transparent;
+                position: relative;
+
+                .client-logo {
+                    position: absolute;
+                    top: -60px;
+                    left: calc(50% - 50px);
+                    width: 100px;
+
+                    &[src="assets/Images/logo-google.png"] {
+                        top: -65px;
+                    }
+                }
+            }
+        }
+
+        .carousel-indicators .active {
+            border-color: $blue transparent transparent transparent;
+        }
+
+        .carousel-inner {
+            margin: 20px 0;
+        }
+
+        .carousel-item {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .carousel-control-next-icon, .carousel-control-prev-icon {
+            color: $blue;
+            font-size: 36px;
+        }
+
+        .author {
+            font-weight: bold;
+
+            span {
+                color: $blue;
+            }
+        }
+    }
+}
