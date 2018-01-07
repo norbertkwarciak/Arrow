@@ -1,0 +1,128 @@
+@media (max-width: 1100px) {
+    .clients .carousel .carousel-indicators li {
+        margin: 0 50px;
+    }
+}
+
+@media (max-width: 1000px) {
+
+    .offices #map {
+        width: 80%;
+        height: auto;
+    }
+
+    .clients .container {
+        width: 90%;
+    }
+}
+
+@media (max-width: 850px) {
+
+    .clients .carousel .carousel-indicators li {
+        margin: 0 40px;
+
+        .client-logo {
+            top: -55px;
+            left: calc(50% - 40px);
+            width: 80px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+
+    .container {
+        width: 90%;
+    }
+
+    header {
+
+        .menu {
+            display: none;
+        }
+
+        .wrapper p {
+            padding: 0;
+        }
+    }
+
+    .services .service-text {
+        padding: 0;
+        margin: 20px 0;
+    }
+
+    .portfolio .container {
+        width: 100%;
+    }
+
+    .lorem-ipsum, .clients .quote {
+        width: 70%;
+    }
+
+    .offices #map {
+        height: auto; 
+        width: 100%;
+    }
+
+    .clients .carousel .carousel-indicators li {
+        margin: 0 30px;
+
+        .client-logo {
+            top: -55px;
+            left: calc(50% - 30px);
+            width: 60px;
+
+            .google {
+                top: -55px;
+            }
+        }
+    }
+
+    footer .footer-img {
+        margin-top: 20px;
+    }
+};
+
+@media (max-width: 600px) {
+
+    .clients .carousel .carousel-indicators li {
+        margin: 0 20px;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .offices #map {
+        max-height: 200px; 
+        max-width: 300px;
+    }
+
+    .clients {
+    
+        .container {
+            width: 100%;
+        }
+
+        .carousel .carousel-indicators li {
+            margin: 0 10px;
+        
+            .client-logo {
+                top: -45px;
+                left: calc(50% - 20px);
+                width: 40px;
+            }
+        }
+    }
+}
+
+@media (max-width: 400px) {
+
+    .offices #map {
+        max-height: 175px; 
+        max-width: 250px;
+    }
+
+    .client-logo {
+        display: none;
+    }
+}
