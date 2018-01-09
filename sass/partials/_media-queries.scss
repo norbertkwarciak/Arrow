@@ -37,6 +37,21 @@
 
     header {
 
+        .container {
+            width: 100%;
+        }
+
+        nav {
+         
+            #logo-nav {
+                margin: 20px;
+            }
+
+            .menu {
+                display: none;
+            }
+        }   
+
         .menu {
             display: none;
         }
@@ -89,10 +104,13 @@
 
 @media (max-width: 600px) {
 
-    .clients .carousel .carousel-indicators li {
-        margin: 0 20px;
+    .clients {
+        
+        .lorem-ipsum {
+            margin: 10px auto 50px;
+        }
 
-        .client-logo {
+        .carousel .carousel-indicators {
             display: none;
         }
     }

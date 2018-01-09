@@ -110,3 +110,19 @@ header {
         z-index: 1;
     }
 }
+
+.column-menu {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    z-index: 99;
+    text-align: center;
+    
+    li {
+        display: block;
+        padding: 10px 0;
+        margin: 0;
+    }
+}
