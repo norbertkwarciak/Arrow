@@ -44,6 +44,10 @@
         .wrapper p {
             padding: 0;
         }
+
+        .hamburger {
+            display: block;
+        }
     }
 
     .services .service-text {
@@ -87,6 +91,10 @@
 
     .clients .carousel .carousel-indicators li {
         margin: 0 20px;
+
+        .client-logo {
+            display: none;
+        }
     }
 }
 
@@ -105,12 +113,6 @@
 
         .carousel .carousel-indicators li {
             margin: 0 10px;
-        
-            .client-logo {
-                top: -45px;
-                left: calc(50% - 20px);
-                width: 40px;
-            }
         }
     }
 }
@@ -120,9 +122,5 @@
     .offices #map {
         max-height: 175px; 
         max-width: 250px;
-    }
-
-    .client-logo {
-        display: none;
     }
 }

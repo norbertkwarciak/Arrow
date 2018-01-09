@@ -12,7 +12,7 @@ header {
         #logo-nav {
             height: 43px;
             width: 72px;
-            margin: 10px 0;
+            margin: 20px 0;
         }
 
         ul {
@@ -91,6 +91,7 @@ header {
     .scroll-btn-wrapper {
         margin: 0 auto;
         text-align: center;
+        z-index: 2;
 
         #scroll-icon {
             height: 30px;
@@ -106,5 +107,6 @@ header {
     .sep-bot {
         position: absolute;
         bottom: 0;
+        z-index: 1;
     }
 }

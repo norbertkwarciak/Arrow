@@ -23,9 +23,9 @@ module.exports = function (grunt) {
             dynamic: {
                 files: [{
                     expand: true,
-                    cwd: 'images/',
+                    cwd: 'assets/',
                     src: ['**/*.{png,jpg,gif}'],
-                    dest: 'images/build/'
+                    dest: 'assets/build/'
                 }]
             }
         },
@@ -33,7 +33,7 @@ module.exports = function (grunt) {
         uglify: {
             my_target: {
                 files: {
-                    'js/app.min.js': ['js/scripts.js']
+                    'dist/app.min.js': ['js/scripts.js']
                 }
             }
         },
@@ -46,6 +46,18 @@ module.exports = function (grunt) {
             },
         },
 
+        htmlmin: {                                     
+            dist: {                                      
+                options: {                               
+                    removeComments: true,
+                    collapseWhitespace: true
+                },
+                files: {                                   
+                    'dist/index.html': 'index.html',     
+                }
+            }
+        },
+
         watch: {
             css: {
                 files: '**/*.scss',
@@ -56,7 +68,7 @@ module.exports = function (grunt) {
             },
 
             images: {
-                files: ['images/*.{png,jpg,gif}'],
+                files: ['assets/*.{png,jpg,gif}'],
                 tasks: ['imagemin'],
                 options: {
                     spawn: false,
@@ -76,8 +88,10 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
-    grunt.registerTask('default', ['sass', 'autoprefixer','imagemin', 'uglify'], ['watch']);
+    grunt.registerTask('default', ['sass', 'autoprefixer','imagemin', 'uglify', 'htmlmin'], ['watch']);
+    grunt.registerTask('distro', ['htmlmin']);
 };
