@@ -84,6 +84,14 @@ p {
     width: 100%;
 }
 
+.sep-top {
+    margin-top: -1px;
+}
+
+.sep-bot {
+    margin-bottom: -1px;
+}
+
 .overlay {
     background-color: rgba(0, 0, 0, 0.7);
     top: 0;
