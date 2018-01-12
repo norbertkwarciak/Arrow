@@ -12,7 +12,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: 'sass',
-                    src: ['*.scss'],
+                    src: ['**/*.scss'],
                     dest: 'css',
                     ext: '.css'
                 }]
@@ -85,9 +85,24 @@ module.exports = function (grunt) {
             }
         },
 
+        browserSync: {
+            dev: {
+                bsFiles: {
+                    src: ['css/*.css', '*.html', 'js/*.min.js']
+                },
+                options: {
+                    spawn: false,
+                    watchTask: true,
+                    server: {
+                        baseDir: "./"
+                    }
+                }
+            }
+        },
+
         watch: {
             sass: {
-                files: ['sass/*.scss'],
+                files: ['**/*.scss'],
                 tasks: ['sass'],
                 options: {
                     spawn: true,
@@ -126,8 +141,9 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
+    grunt.loadNpmTasks('grunt-browser-sync');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
-    grunt.registerTask('default', ['sass', 'postcss:dist', 'imagemin', 'uglify', 'jshint', 'htmlmin'], ['watch']);
+    grunt.registerTask('default', ['sass', 'postcss:dist', 'imagemin', 'uglify', 'jshint', 'htmlmin', 'browserSync', 'watch']);
     grunt.registerTask('distro', ['htmlmin']);
 };
