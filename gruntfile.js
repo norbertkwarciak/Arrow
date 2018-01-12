@@ -6,15 +6,39 @@ module.exports = function (grunt) {
                 sourceMap: true
             },
             dist: {
-                options: {
-                    outputStyle: 'compressed'
-                },
+                // options: {
+                //     outputStyle: 'compressed'
+                // },
                 files: [{
                     expand: true,
                     cwd: 'sass',
-                    src: ['**/*.scss'],
+                    src: ['*.scss'],
                     dest: 'css',
                     ext: '.css'
+                }]
+            }
+        },
+
+        postcss: {
+            options: {
+                map: {
+                    inline: false // save all sourcemaps as separate files... 
+                    // annotation: 'css' // ...to the specified directory 
+                },
+
+                processors: [
+                    require('pixrem')(), // add fallbacks for rem units 
+                    require('autoprefixer')({ browsers: 'last 2 versions' }), // add vendor prefixes 
+                    require('cssnano')() // minify the result 
+                ]
+            },
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: 'css',
+                    src: ['*.css', "!*.min.css"],
+                    dest: 'css',
+                    ext: '.min.css'
                 }]
             }
         },
@@ -32,39 +56,50 @@ module.exports = function (grunt) {
 
         uglify: {
             my_target: {
-                files: {
-                    'js/app.min.js': ['js/scripts.js']
-                }
+                options: {
+                    sourceMap: true,
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'js',
+                    src: ['*.js', '!*min.js'],
+                    dest: 'js',
+                    ext: '.min.js'
+                }]
             }
         },
 
-        autoprefixer: {
-            dist: {
-                files: {
-                    'css/main.css': 'css/main.css'
-                }
-            },
+        jshint: {
+            all: ['js/*.js', '!js/*.min.js']
         },
 
-        htmlmin: {                                     
-            dist: {                                      
-                options: {                               
+        htmlmin: {
+            dist: {
+                options: {
                     removeComments: true,
                     collapseWhitespace: true
                 },
-                files: {                                   
-                    'dist/index.html': 'index.html',     
+                files: {
+                    'dist/index.html': 'index.html',
                 }
             }
         },
 
         watch: {
-            css: {
-                files: '**/*.scss',
+            sass: {
+                files: ['sass/*.scss'],
                 tasks: ['sass'],
                 options: {
-                    spawn: false,
-                }
+                    spawn: true,
+                },
+            },
+
+            css: {
+                files: ['css/*.css', '!css/*.min.css'],
+                tasks: ['postcss:dist'],
+                options: {
+                    spawn: true,
+                },
             },
 
             images: {
@@ -77,7 +112,7 @@ module.exports = function (grunt) {
 
             scripts: {
                 files: ['js/*.js'],
-                tasks: ['uglify'],
+                tasks: ['uglify', 'jshint'],
                 options: {
                     atBegin: true,
                 }
@@ -86,12 +121,13 @@ module.exports = function (grunt) {
     });
 
     grunt.loadNpmTasks('grunt-sass');
+    grunt.loadNpmTasks('grunt-postcss');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
-    grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
-    grunt.registerTask('default', ['sass', 'autoprefixer','imagemin', 'uglify', 'htmlmin'], ['watch']);
+    grunt.registerTask('default', ['sass', 'postcss:dist', 'imagemin', 'uglify', 'jshint', 'htmlmin'], ['watch']);
     grunt.registerTask('distro', ['htmlmin']);
 };
