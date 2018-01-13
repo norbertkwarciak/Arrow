@@ -6,9 +6,6 @@ module.exports = function (grunt) {
                 sourceMap: true
             },
             dist: {
-                // options: {
-                //     outputStyle: 'compressed'
-                // },
                 files: [{
                     expand: true,
                     cwd: 'sass',
@@ -22,14 +19,13 @@ module.exports = function (grunt) {
         postcss: {
             options: {
                 map: {
-                    inline: false // save all sourcemaps as separate files... 
-                    // annotation: 'css' // ...to the specified directory 
+                    inline: false
                 },
 
                 processors: [
-                    require('pixrem')(), // add fallbacks for rem units 
-                    require('autoprefixer')({ browsers: 'last 2 versions' }), // add vendor prefixes 
-                    require('cssnano')() // minify the result 
+                    require('pixrem')(),
+                    require('autoprefixer')({ browsers: 'last 2 versions' }),
+                    require('cssnano')()
                 ]
             },
             dist: {
